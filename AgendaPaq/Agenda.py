@@ -10,7 +10,7 @@ class Agenda():
     def __new__(cls, *args, **kwargs):
         if cls.instance is None:
             cls.instance = object.__new__(cls)
-            return cls.instance
+        return cls.instance
 
     def afficher_titre(self):
         print("Mon Agenda")
