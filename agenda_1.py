@@ -9,4 +9,6 @@ while True:
 
     if saissie == "2" :
         AgendaPaq.ContactLib.voir_contact()
-    if saissie =="3" : break
+    if saissie =="3" :
+        AgendaPaq.ContactLib.fermer_agenda()
+        break
