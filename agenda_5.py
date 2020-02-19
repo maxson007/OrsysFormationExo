@@ -1,5 +1,6 @@
-import AgendaPaq.ContactLib
-agenda=AgendaPaq.ContactLib.Agenda()
+from AgendaPaq.Agenda import Agenda
+from AgendaPaq.SaisieInvalide import SaisieInvalide
+agenda= Agenda()
 while True:
     agenda.afficher_titre()
     agenda.afficher_menu()
@@ -7,7 +8,7 @@ while True:
     if saissie == "1":
         try:
             agenda.ajouer_contact()
-        except AgendaPaq.ContactLib.SaisieInvalide as ex:
+        except SaisieInvalide as ex:
             print(ex)
         except Exception:
             print("Autre erreur")
