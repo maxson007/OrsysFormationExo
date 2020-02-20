@@ -1,8 +1,8 @@
 from AgendaPaq.Agenda import Agenda
 from AgendaPaq.SaisieInvalide import SaisieInvalide
 agenda= Agenda()
+agenda.afficher_titre()
 while True:
-    agenda.afficher_titre()
     agenda.afficher_menu()
     saissie = input("Saissie: ")
     if saissie == "1":
