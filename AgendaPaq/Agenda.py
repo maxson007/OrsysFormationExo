@@ -2,18 +2,17 @@ import shelve
 import re
 from AgendaPaq.Contact import Contact
 from AgendaPaq.SaisieInvalide import SaisieInvalide
-
+from AgendaPaq.ContactMySqlDA import ContactMysqlDA
 
 # Class Agenda
 class Agenda():
     """Agenda class agenda"""
     instance = None
-    agenda = None
+    agendaDB = ContactMysqlDA()
 
     def __new__(cls, *args, **kwargs):
         if cls.instance is None:
             cls.instance = object.__new__(cls)
-            cls.instance.agenda = shelve.open("agenda.dat")
         return cls.instance
 
     def afficher_titre(self):
@@ -57,17 +56,17 @@ class Agenda():
         email = input("taper le email: ")
         if not self.is_valid_email(email):
             raise SaisieInvalide("L'email  : " + email + " n'est pas valide")
-
-        self.agenda[tel] = Contact(nom, prenom, tel, email)
+        self.agendaDB.insert(Contact(nom, prenom, tel, email))
+        #self.agenda[tel] = Contact(nom, prenom, tel, email)
 
     def voir_contact(self):
         print("====" * 20)
-        print('{0[0]:<20} {0[1]:<20} {0[2]:<10} {0[3]:<20}'.format(('Nom', 'Prenom', 'Tel', 'Email')))
+        print('{0[0]:<20} {0[1]:<20} {0[2]:<20} {0[3]:<20}'.format(('Nom', 'Prenom', 'Tel', 'Email')))
         print("====" * 20)
-        for cle, contact in self.instance.agenda.items():
-            # print( (contact))
+        contacts=self.agendaDB.get_all();
+        for cle, contact in contacts.items():
             print(contact)
         print("====" * 20)
 
     def fermer_agenda(self):
-        self.instance.agenda.close()
+        self.agendaDB.close()

@@ -1,4 +1,6 @@
-class Contact():
+
+class Contact:
+
     """ Class contact pour creer des objet de type contact"""
 
     def __init__(self, nom, prenom, tel, email):
@@ -8,4 +10,4 @@ class Contact():
         self.email = email
 
     def __str__(self):
-        return '{0[0]:<20} {0[1]:<20} {0[2]:<10} {0[3]:<20}'.format((self.nom, self.prenom, self.tel, self.email))
+        return '{0[0]:<20} {0[1]:<20} {0[2]:<20} {0[3]:<20}'.format((self.nom, self.prenom, self.tel, self.email))
