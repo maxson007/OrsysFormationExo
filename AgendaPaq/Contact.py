@@ -8,4 +8,4 @@ class Contact():
         self.email = email
 
     def __str__(self):
-        return '{0[0]:<20} {0[1]:<20} {0[2]:<10} {0[2]:<20}'.format((self.nom, self.prenom, self.tel, self.email))
+        return '{0[0]:<20} {0[1]:<20} {0[2]:<10} {0[3]:<20}'.format((self.nom, self.prenom, self.tel, self.email))

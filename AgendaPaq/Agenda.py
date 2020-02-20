@@ -32,14 +32,14 @@ class Agenda():
         return True
 
     def is_valid_name_expr(self, name):
-        regex = "^([A-Za-z-])\s+$"
+        regex = "^[A-Za-z\s\-]+$"
         return re.match(regex, name) != None
 
     def is_valid_phone_number(self, phone_number):
         return re.match("^[+]?[0-9]{,15}$", phone_number) != None
 
     def is_valid_email(self, email):
-        return re.match("^[a-z0-9]+@[a-z0-9.-]+\.[a-z]{2,}$", email) != None
+        return re.match("^[a-z0-9\-\_\.]+@[a-z0-9\.\-]+\.[a-z]{2,}$", email) != None
 
     def ajouer_contact(self):
         nom = input("taper le nom: ")
@@ -55,7 +55,7 @@ class Agenda():
             raise SaisieInvalide("Le numero de tel  : " + tel + " n'est pas valide")
 
         email = input("taper le email: ")
-        if not self.is_valid_phone_number(email):
+        if not self.is_valid_email(email):
             raise SaisieInvalide("L'email  : " + email + " n'est pas valide")
 
         self.agenda[tel] = Contact(nom, prenom, tel, email)
