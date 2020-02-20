@@ -1,15 +1,19 @@
 import shelve
+import re
 from AgendaPaq.Contact import Contact
 from AgendaPaq.SaisieInvalide import SaisieInvalide
+
+
 # Class Agenda
 class Agenda():
     """Agenda class agenda"""
     instance = None
-    agenda = shelve.open("agenda.dat")
+    agenda = None
 
     def __new__(cls, *args, **kwargs):
         if cls.instance is None:
             cls.instance = object.__new__(cls)
+            cls.instance.agenda = shelve.open("agenda.dat")
         return cls.instance
 
     def afficher_titre(self):
@@ -27,16 +31,34 @@ class Agenda():
             return False
         return True
 
+    def is_valid_name_expr(self, name):
+        regex = "^([A-Za-z-])\s+$"
+        return re.match(regex, name) != None
+
+    def is_valid_phone_number(self, phone_number):
+        return re.match("^[+]?[0-9]{,15}$", phone_number) != None
+
+    def is_valid_email(self, email):
+        return re.match("^[a-z0-9]+@[a-z0-9.-]+\.[a-z]{2,}$", email) != None
+
     def ajouer_contact(self):
         nom = input("taper le nom: ")
-        if not self.instance.is_valid_name(nom):
+        if not self.is_valid_name_expr(nom):
             raise SaisieInvalide("Le nom : " + nom + " n'est pas valide")
+
         prenom = input("taper le prenom: ")
-        if not self.instance.is_valid_name(prenom):
+        if not self.is_valid_name_expr(prenom):
             raise SaisieInvalide("Le nom : " + prenom + " n'est pas valide")
+
         tel = input("taper le tel: ")
+        if not self.is_valid_phone_number(tel):
+            raise SaisieInvalide("Le numero de tel  : " + tel + " n'est pas valide")
+
         email = input("taper le email: ")
-        self.instance.agenda[tel] = Contact(nom, prenom, tel, email)
+        if not self.is_valid_phone_number(email):
+            raise SaisieInvalide("L'email  : " + email + " n'est pas valide")
+
+        self.agenda[tel] = Contact(nom, prenom, tel, email)
 
     def voir_contact(self):
         print("====" * 20)

@@ -10,8 +10,8 @@ while True:
             agenda.ajouer_contact()
         except SaisieInvalide as ex:
             print(ex)
-        except Exception:
-            print("Autre erreur")
+        except Exception as e:
+            print(e)
 
     if saissie == "2" :
         agenda.voir_contact()
