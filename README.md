@@ -34,3 +34,5 @@ Module `argparse` pour les arguments en ligne de commande plus poussé
 
 Module de debug `pdb`
 Module collection les tuples nommés
+
+python en mode prod : python -o
