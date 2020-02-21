@@ -10,12 +10,11 @@ https://regex101.com/
 
 http://sametmax.com/le-pep8-en-resume/
 
-app multi platform
-kivy.org
+app multi platform : http://kivy.org
 
-regex nom prenom: `^[a-zA-Z]+[ \-']?[[a-zA-Z]+[ \-']?]*[a-zA-Z]+$`
+regex nom prénom: `^[a-zA-Z]+[ \-']?[[a-zA-Z]+[ \-']?]*[a-zA-Z]+$`
 
-regex numero de telephone: `^[+]?[0-9]{,15}$`
+regex numéro de telephone: `^[+]?[0-9]{,15}$`
 
 regex email: `^[a-z0-9._+-]+@[a-z0-9.-]+\.[a-z]{2,}$`
 
@@ -33,5 +32,5 @@ INSERT INTO `contact` (`id`,`nom`,`prenom`,`numerotel`,`email`) VALUES (1,"Kai",
 ```
 Module `argparse` pour les arguments en ligne de commande plus poussé
 
-
-Module collection les tuple nommé
+Module de debug `pdb`
+Module collection les tuples nommés
