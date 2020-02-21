@@ -1,6 +1,4 @@
-
 class Contact:
-
     """ Class contact pour creer des objet de type contact"""
 
     def __init__(self, nom, prenom, tel, email):

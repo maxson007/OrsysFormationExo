@@ -8,6 +8,8 @@ http://buildregex.com/
 
 https://regex101.com/
 
+http://sametmax.com/le-pep8-en-resume/
+
 app multi platform
 kivy.org
 
